@@ -24,29 +24,20 @@ classDiagram
     }
     class Lector {
         - Str numeroDeSocio
-        - Fecha fechaDeRegistro
+        - Date fechaDeRegistro
         - List <Prestamo> prestamos
     }
     class Prestamo {
         - Libro libroPrestado
         - Lector lector
-        - Fecha fechaDePrestamo
-        - Fecha fechaDeDevolucion
+        - Date fechaDePrestamo
+        - Date fechaDeDevolucion
         + devolverLibro() void
-    }
-    class Fecha {
-	    - int dia
-	    - int mes
-	    - int anio
-	    - int minutos
-	    - int hora
     }
     Biblioteca "1" o-- "1..*" Libro : contiene
     Biblioteca "1" o-- "0..**" Persona : registra
     Persona "1" <|-- "1" Lector: es
     Lector "1" o-- "0..*" Prestamo : realiza
-    Lector "1" --> "1" Fecha : en
     Prestamo "1" --> "1" Libro : tiene
     Prestamo "1" --> "1" Lector : de
-    Prestamo "1" --> "1" Fecha : en
 ```

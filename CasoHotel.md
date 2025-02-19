@@ -51,7 +51,7 @@ direction TB
 	    - int numeroContacto
     }
     class Huesped {
-	    - fecha fechaRegistro
+	    - Date fechaRegistro
         - list reservasActuales
     }
     class Trabajador {
@@ -60,29 +60,19 @@ direction TB
     class Reserva {
 	    - Habitacion habitacionReserva
 	    - Huesped huespedReserva
-	    - fecha inicioReserva
-	    - fecha finReserva
+	    - Date inicioReserva
+	    - Date finReserva
         + actualizarEstado() void
         + calcularCosto() double
-    }
-    class Fecha {
-	    - int dia
-	    - int mes
-	    - int anio
-	    - int minutos
-	    - int hora
     }
     Hotel "1" --> "1" Direccion : tiene
     Hotel "1" o-- "1..*" Habitacion : tiene
     Hotel "1" o-- "0..*" Reserva : tiene
-    Hotel "1" --> "1..*" Persona : tiene
+    Hotel "1" o-- "1..*" Persona : tiene
     Hotel "1" o-- "1..*" Trabajador : emplea
     Huesped "1" --> "0..*" Reserva : realiza
-    Huesped "1" --> "1" Fecha : registro
     Reserva "1" --> "1" Habitacion : tiene
     Reserva "1" --> "1" Huesped : tiene
-    Reserva "1" --> "1" Fecha : inicio
-    Reserva "1" --> "1" Fecha : fin
     Habitacion "1" o-- "0..*" Reserva : historial
     Habitacion <|-- Individual : tipo
     Habitacion <|-- Doble : tipo
